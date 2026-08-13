@@ -1,17 +1,325 @@
 ---
-import { SITE_CONTENT } from "@config";
-import Hero from "@components/Hero.astro";
-import Layout from "@layouts/Layout.astro";
-import Experience from "@components/Experience.astro";
-import Projects from "@components/Projects.astro";
-import About from "@components/About.astro";
-
 import "../styles/global.css";
+
+const skills = [
+  ["Laravel / PHP", 85],
+  ["MySQL / Database Design", 80],
+  ["JavaScript / Front-end", 65],
+  ["C# / .NET WinForms", 60],
+];
+const tools = [
+  "Laravel",
+  "PHP",
+  "MySQL",
+  "JavaScript",
+  "jQuery",
+  "Bootstrap 5",
+  "Blade",
+  "Chart.js",
+  "CodeIgniter",
+  ".NET WinForms",
+  "DataTables",
+  "Git / GitHub",
+  "Canvas API",
+];
+const projects = [
+  {
+    id: "01",
+    title: "AU SARF Tracer",
+    role: "Co-developer",
+    text: "A Laravel-based tracer system for logging and routing SARF request/approval documents, with a print/PDF generation feature for approval cards using html2pdf.js — including a pagination fix where approval card elements were splitting incorrectly across pages, solved by measuring boundaries with getBoundingClientRect() instead of offsetTop.",
+    tech: "Laravel · MySQL · Blade · Bootstrap 5",
+    link: "https://github.com/Johnmer115/Tracer",
+  },
+  {
+    id: "02",
+    title: "WeConnect — Brgy 409",
+    role: "Co-developer",
+    text: "A barangay management system for Barangay 409, Manila, covering a certification module, a dashboard with an announcement banner and staff/timeline info, and a finance management module added at your supervisor's request — built with role-based middleware and PDF generation via laravel-dompdf.",
+    tech: "Laravel · MySQL · Bootstrap 5 · Chart.js",
+    link: "https://github.com/Johnmer115/WeConnect_Brgy409",
+  },
+  {
+    id: "03",
+    title: "AU AIS",
+    role: "Contributor / QA",
+    text: "An Academic Information System for Admin, Enrollment Officer, and Student roles, where you focused on QA — testing role-based access control across the three roles, the grade-import workflow, and the student-facing portal.",
+    tech: "Laravel · MySQL · Blade",
+    link: "https://github.com/Jerdzdidan/AU-AIS",
+  },
+  {
+    id: "04",
+    title: "AMGC Pharmacy Inventory",
+    role: "Contributor / QA",
+    text: "A desktop POS and inventory management system for a pharmacy, handling purchase orders, supplier records, refunds, and a sales dashboard on a MySQL backend accessed through a pooled ADO.NET data layer.",
+    tech: "C# · .NET WinForms · MySQL · ADO.NET",
+    link: "https://github.com/rhennmarc/CS311-Inventory-Management-System",
+  },
+  {
+    id: "05",
+    title: "Maayo Company",
+    role: "Front-end Developer",
+    text: "Digitized Maayo Company's manual shipment booking process into a web system with a customer-facing booking flow and an admin panel to manage incoming bookings, built during your pre-OJT in 2nd year.",
+    tech: "CodeIgniter · PHP · JavaScript · MySQL · Bootstrap",
+  },
+  {
+    id: "06",
+    title: "Dress & Stop",
+    role: "Solo Developer",
+    text: "A website for a local tailoring shop combining a clothing catalog — casual dresses, formal attire, school uniforms, blazers, and more — with an appointment booking flow for fittings and pickups. I made it in my 1st year.",
+    tech: "HTML · CSS",
+    link: "https://github.com/Johnmer115/Dress-And-Stop.github.io",
+  },
+];
 ---
 
-<Layout>
-  <Hero {...SITE_CONTENT.hero} />
-  <Experience experience={SITE_CONTENT.experience} />
-  <Projects projects={SITE_CONTENT.projects} />
-  <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head
+    ><meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width"
+    /><meta
+      name="description"
+      content="Johnmer Tanqui-on — Full Stack Developer."
+    /><title>Johnmer Tanqui-on | Portfolio</title></head
+  >
+  <body>
+    <header class="header shell">
+      <a class="logo" href="#home"><span>JT</span><b>JOHNMER TANQUI-ON</b></a>
+      <button
+        class="menu-button"
+        aria-label="Open navigation"
+        aria-expanded="false"><i></i><i></i></button
+      >
+      <nav class="nav">
+        <a href="#about">Information</a><a href="#skills">Skills</a><a
+          href="#projects">Projects</a
+        ><a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <section id="home" class="hero shell">
+        <p class="eyebrow">PORTFOLIO / 2026 &nbsp; MANILA, PH</p>
+        <div class="hero-grid">
+          <div>
+            <h1>
+              Johnmer<br />Tanqui-on
+            </h1><p class="intro">
+              I build web and desktop systems with backend logic, database
+              design, and clear user interfaces.
+            </p><p class="build-line">
+              Building <span class="role-cycle">Laravel systems</span><span
+                class="cursor">_</span
+              >
+            </p><a class="button" href="#projects"
+              >View projects <span>↓</span></a
+            >
+          </div>
+          <div class="hero-side">
+            <div class="portrait">
+              <img src="/Jm_pic.jpg" alt="Johnmer Tanqui-on" />
+            </div>
+            <div class="overview-panel">
+              <div><span>STATUS</span><b>AVAILABLE</b></div>
+              <div><span>ROLE</span><b>FULL STACK DEVELOPER</b></div>
+              <div><span>LOCATION</span><b>MANILA, PH</b></div>
+              <div><span>FOCUS</span><b>LARAVEL / MYSQL</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="section shell information-section">
+        <div class="section-heading">
+          <span>01</span><div>
+            <p class="kicker">PROFILE</p><h2>Information</h2>
+          </div>
+        </div>
+        <div class="information-grid">
+          <div class="information-copy">
+            <p class="information-lead">
+              I'm a Computer Science undergraduate at Arellano University with a
+              full-stack focus. I just finished my OJT as a full-stack developer
+              trainee at the CS Department Incubation Room, where I built and
+              shipped internal web systems for university offices and a nearby
+              barangay system.
+            </p><p>
+              I enjoy working on systems that bring together backend logic,
+              database design, and simple user interfaces. My project work
+              includes document tracing, community information management,
+              inventory, and booking workflows.
+            </p><p>
+              Outside of coursework, I competed in <strong
+                >CodeChum's National Programming Challenge</strong
+              > in both 2024 and 2025, and previously served as External Vice President
+              of the Computer Studies Society.
+            </p>
+          </div>
+          <dl class="facts">
+            <div>
+              <dt>Education</dt><dd>
+                BS Computer Science · Arellano University
+              </dd>
+            </div><div><dt>Status</dt><dd>4th Year</dd></div><div>
+              <dt>OJT</dt><dd>Completed · CS Department Incubation Room</dd>
+            </div><div><dt>Focus</dt><dd>Full-Stack Development</dd></div><div>
+              <dt>Recognition</dt><dd>CodeChum NPC · 2024 & 2025</dd>
+            </div><div>
+              <dt>Past Org</dt><dd>External VP · Computer Studies Society</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <section id="skills" class="section skills-section">
+        <div class="shell">
+          <div class="section-heading">
+            <span>02</span><div>
+              <p class="kicker">TECHNICAL STACK</p><h2>My Skills</h2>
+            </div>
+          </div><div class="skill-board">
+            {
+              skills.map(([name, score]) => (
+                <div class="skill-row">
+                  <>
+                    <span>{name}</span>
+                    <div>
+                      <i data-width={score} />
+                    </div>
+                    <b>{score}%</b>
+                  </>
+                </div>
+              ))
+            }
+          </div><p class="tools-title">FRAMEWORKS AND TOOLS</p><div
+            class="tool-list"
+          >
+            {tools.map((tool) => <span>{tool}</span>)}
+          </div>
+        </div>
+      </section>
+      <section id="projects" class="section shell projects">
+        <div class="section-heading">
+          <span>03</span><div>
+            <p class="kicker">SELECTED WORK</p><h2>Completed Projects</h2>
+          </div>
+        </div><div class="project-grid">
+          {
+            projects.map((project, index) => (
+              <details class="project-card" open={index === 0}>
+                <>
+                  <summary>
+                    <>
+                      <span>{project.id}</span>
+                      <div>
+                        <>
+                          <h3>{project.title}</h3>
+                          <p>{project.role}</p>
+                        </>
+                      </div>
+                      <b>+</b>
+                    </>
+                  </summary>
+                  <div class="project-detail">
+                    <p>{project.text}</p>
+                    <small>{project.tech}</small>
+                    {project.link && (
+                      <a href={project.link} target="_blank">
+                        View GitHub ↗
+                      </a>
+                    )}
+                  </div>
+                </>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+      <section id="contact" class="contact">
+        <div class="shell">
+          <p class="kicker">04 / CONTACT</p><h2>Get in touch</h2><a
+            class="email"
+            href="mailto:johnmertanquion115@gmail.com"
+            >johnmertanquion115@gmail.com</a
+          ><a
+            class="github"
+            href="https://github.com/Johnmer115"
+            target="_blank">github.com/Johnmer115 ↗</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="shell">
+      © {new Date().getFullYear()} Johnmer Tanqui-on
+    </footer>
+    <script is:inline>
+      const menu = document.querySelector(".menu-button");
+      const nav = document.querySelector(".nav");
+      menu?.addEventListener("click", () => {
+        const open = menu.getAttribute("aria-expanded") === "true";
+        menu.setAttribute("aria-expanded", String(!open));
+        nav?.classList.toggle("is-open", !open);
+      });
+      const navLinks = [...document.querySelectorAll(".nav a")];
+      const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+      const navObserver = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach((link) =>
+              link.classList.toggle(
+                "is-active",
+                link.getAttribute("href") === `#${entry.target.id}`,
+              ),
+            );
+          }),
+        { rootMargin: "-35% 0px -55% 0px", threshold: 0 },
+      );
+      sections.forEach((section) => navObserver.observe(section));
+      const roles = [
+        "Laravel systems",
+        "database solutions",
+        "web interfaces",
+        "business workflows",
+      ];
+      const role = document.querySelector(".role-cycle");
+      let roleIndex = 0;
+      function typeRole() {
+        if (!role) return;
+        const nextRole = roles[roleIndex];
+        let character = 0;
+        role.textContent = "";
+        const writer = window.setInterval(() => {
+          role.textContent += nextRole[character] ?? "";
+          character += 1;
+          if (character >= nextRole.length) {
+            window.clearInterval(writer);
+            window.setTimeout(() => {
+              roleIndex = (roleIndex + 1) % roles.length;
+              typeRole();
+            }, 1350);
+          }
+        }, 75);
+      }
+      typeRole();
+      const skillBoard = document.querySelector(".skill-board");
+      const skillObserver = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target
+              .querySelectorAll("i[data-width]")
+              .forEach((bar, index) => {
+                window.setTimeout(() => {
+                  bar.style.width = `${bar.dataset.width}%`;
+                }, index * 160);
+              });
+            skillObserver.unobserve(entry.target);
+          }),
+        { threshold: 0.35 },
+      );
+      if (skillBoard) skillObserver.observe(skillBoard);
+    </script>
+  </body>
+</html>
